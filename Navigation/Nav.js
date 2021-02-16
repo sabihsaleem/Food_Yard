@@ -11,10 +11,15 @@ import {
 } from 'react-native-animated-nav-tab-bar';
 import { Icon } from 'react-native-elements'
 import Contact from '../component/Contact';
+import Drawer from '../Navigation/Drawer';
+import Maps from '../component/Maps';
+import { createStackNavigator } from '@react-navigation/stack';
+import Cuisine from '../component/Cuisine';
 
 const Tabs = AnimatedTabBarNavigator();
+const Stack = createStackNavigator()
 
-export default function Nav() {
+function Tabular() {
   return (
     <Tabs.Navigator
       tabBarOptions={{
@@ -40,14 +45,36 @@ export default function Nav() {
         }}
       />
       <Tabs.Screen
-        name="Contact"
-        component={Contact}
+        name="Cuisine"
+        component={Cuisine}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="address-card" color="#006EF1" />
+            <Icon name="facebook" color="#006EF1" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Maps"
+        component={Maps}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon name="map" color="#006EF1" />
           ),
         }}
       />
     </Tabs.Navigator>
+  );
+}
+
+export default function Nav() {
+  return (
+    <Stack.Navigator initialRouteName="tabular" headerMode={null}>
+      <Stack.Screen name="Drawer" component={Drawer} />
+      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="Contact" component={Contact} />
+      <Stack.Screen name="Map" component={Maps} />
+      <Stack.Screen name="tabular" component={Tabular} />
+      <Stack.Screen name="Cuisine" component={Cuisine} />
+    </Stack.Navigator>
   );
 }

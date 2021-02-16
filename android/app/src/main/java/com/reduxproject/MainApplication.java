@@ -13,6 +13,7 @@ import java.util.List;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.airbnb.android.react.maps.MapsPackage; 
 
 public class MainApplication extends Application implements ReactApplication {
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">reduxProject</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">(AIzaSyBVATI2CtnC6O8U8JJ8tLspP63MWUiFlHk)</string>
 </resources>

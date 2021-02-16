@@ -2,7 +2,7 @@ import React, {Component,createRef} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import ActionSheet from "react-native-actions-sheet";
 
-export default class Contact extends React.Component {
+export default class Cuisine extends React.Component {
 
   componentDidMount() {
     const actionSheetRef = createRef()
