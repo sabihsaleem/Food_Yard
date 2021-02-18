@@ -5,6 +5,8 @@ import Geolocation from 'react-native-geolocation-service';
 import Geocoder from 'react-native-geocoding';
 import ActionSheet from "react-native-actions-sheet";
 
+var actionSheetRef = createRef()
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
@@ -62,6 +64,9 @@ export default class Maps extends Component {
     } catch (err) {
       console.warn(err)
     }
+    <ActionSheet gestureEnabled={true} ref = { actionSheetRef }/>
+    actionSheetRef.current?.hide();
+    actionSheetRef.current?.setModalVisible(false);
   }
 
   onRegionChange(region) {
@@ -101,7 +106,6 @@ export default class Maps extends Component {
   }
 
   render() {
-    const actionSheetRef = createRef()
     let actionSheet
     return (
       <View style={styles.container}>
@@ -215,12 +219,12 @@ export default class Maps extends Component {
             >
               <TouchableOpacity
                   onPress = {() => {
-                      actionSheetRef.current?.setModalVisible()
+                      actionSheetRef.current?.show()
                   }}
               >
                   <Text style={{fontSize: 20, color: '#77C360', textDecorationLine: 'underline', marginBottom: 10}}>Cuisine</Text>
               </TouchableOpacity>
-              <ActionSheet ref = { actionSheetRef }>
+              <ActionSheet gestureEnabled={true} ref = { actionSheetRef }>
                 <View style={{alignItems: 'center', marginTop: 20}}>
                   <Text style={{fontSize: 20, color: '#77C360', textDecorationLine: 'underline', marginBottom: 10}}>Cuisine</Text>
                   <TouchableOpacity onPress={()=> this.action()}>

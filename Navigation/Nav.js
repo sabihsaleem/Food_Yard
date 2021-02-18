@@ -15,6 +15,7 @@ import Drawer from '../Navigation/Drawer';
 import Maps from '../component/Maps';
 import { createStackNavigator } from '@react-navigation/stack';
 import Cuisine from '../component/Cuisine';
+import CuisineList from '../component/CuisineList';
 
 const Tabs = AnimatedTabBarNavigator();
 const Stack = createStackNavigator()
@@ -23,15 +24,21 @@ function Tabular() {
   return (
     <Tabs.Navigator
       tabBarOptions={{
-        activeTintColor: '#006EF1',
-        inactiveTintColor: '#006EF1',
+        activeTintColor: '#77C360',
+        inactiveTintColor: '#707070',
+        activeBackgroundColor: '#FDFFFC',
       }}>
       <Tabs.Screen
         name="Home"
         component={Home}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="home" color="#006EF1" />
+            <Icon
+              name="home" 
+              color={focused ? color : "#707070"}
+              focused={focused}
+              color={color}
+            />
           ),
         }}
       />
@@ -40,7 +47,12 @@ function Tabular() {
         component={Dashboard}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="dashboard" color="#006EF1" />
+            <Icon
+              name="dashboard"
+              color={focused ? color : "#707070"}
+              focused={focused}
+              color={color}
+            />
           ),
         }}
       />
@@ -49,7 +61,12 @@ function Tabular() {
         component={Cuisine}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="facebook" color="#006EF1" />
+            <Icon
+              name="facebook"
+              color={focused ? color : "#707070"}
+              focused={focused}
+              color={color}
+            />
           ),
         }}
       />
@@ -58,7 +75,26 @@ function Tabular() {
         component={Maps}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="map" color="#006EF1" />
+            <Icon
+              name="map"
+              color={focused ? color : "#707070"}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="CuisineList"
+        component={CuisineList}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="list"
+              color={focused ? color : "#707070"}
+              focused={focused}
+              color={color}
+            />
           ),
         }}
       />
@@ -69,12 +105,13 @@ function Tabular() {
 export default function Nav() {
   return (
     <Stack.Navigator initialRouteName="tabular" headerMode={null}>
-      <Stack.Screen name="Drawer" component={Drawer} />
+      <Stack.Screen name="Drawer">{(props) => <Drawer {...props} />}</Stack.Screen>
       <Stack.Screen name="Dashboard" component={Dashboard} />
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name="Map" component={Maps} />
       <Stack.Screen name="tabular" component={Tabular} />
       <Stack.Screen name="Cuisine" component={Cuisine} />
+      <Stack.Screen name="CuisineList" component={CuisineList} />
     </Stack.Navigator>
   );
 }

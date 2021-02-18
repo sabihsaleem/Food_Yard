@@ -12,23 +12,6 @@ export default class Dashboard extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   const datacarousel = [
-  //     {
-  //         "id": 0,
-  //         "title": "This is snowman first title",
-  //         "imagePath": '../image4.png',
-  //     },
-  //     {
-  //         "id": 1,
-  //         "title": "Snowman",
-  //         "subtitle": "The guy you want",
-  //         "imagePath": "https://cdn.pixabay.com/photo/2017/12/09/16/41/snow-man-3008179_1280.jpg",
-  //     },
-  //   ];
-  //   this.setState({datacarousel})
-  // }
-
   _renderItem = (item) => {
     return (
       <View style={{ backgroundColor: '#172121', borderRadius: 20, marginHorizontal: 20, height: '96%', marginBottom: 30}}>
@@ -56,7 +39,7 @@ export default class Dashboard extends React.Component {
             <Text  style={{fontSize: 16, color: '#77C360', marginHorizontal:20, paddingTop: 10, textDecorationLine: 'underline'}}>Next Choice</Text>
             <Text  style={{fontSize: 16, color: '#77C360', marginHorizontal:20, paddingTop: 10, textDecorationLine: 'underline'}}>on Italy/salty</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Cuisine')}>
             <Image
               style={{width: 30, height: 20, marginHorizontal: 20, marginBottom: 10, marginVertical: 10}}
               source={require('../arrow.png')}
@@ -104,28 +87,6 @@ export default class Dashboard extends React.Component {
               itemWidth={310}
             />
           </ScrollView>
-          {/* <Text>
-              Dashboard
-          </Text>
-          <View
-            style = {{
-                justifyContent: "center",
-                flex: 1,
-            }}
-          >
-            <TouchableOpacity
-                onPress = {() => {
-                    actionSheetRef.current?.setModalVisible()
-                }}
-            >
-                <Text>Open ActionSheet</Text>
-            </TouchableOpacity>
-            <ActionSheet ref = { actionSheetRef }>
-                <View>
-                    <Text>YOUR CUSTOM</Text>
-                </View>
-            </ActionSheet>
-          </View> */}
         </View>
     );
   }
@@ -135,10 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E4F3DF',
     borderColor: '#707070',
-    borderWidth: 1,
     overflow:"hidden",
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   image: {
     height: 50,

@@ -1,118 +1,39 @@
-import React, {Component,createRef} from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
-import ActionSheet from "react-native-actions-sheet";
+import React, { Component } from "react";
+import { View, Button, Text, TouchableOpacity, Image } from "react-native";
+import RBSheet from "react-native-raw-bottom-sheet";
 
-export default class Contact extends React.Component {
-
-  componentDidMount() {
-    const actionSheetRef = createRef()
-    actionSheetRef.current?.setModalVisible(false);
+export default class Contact extends Component {
+  
+  action() {
+    this.props.navigation.navigate('Cuisine')
   }
 
   render() {
     return (
-      <View style={styles.main}>
-        <View style={{height: '7%', justifyContent: 'center',}}>
-          <TouchableOpacity style={{marginHorizontal: 5}} >
-            <Image style={styles.image} source={require('../back-button-icon-png-25.jpg')} />
-          </TouchableOpacity>
-        </View>
-        <ScrollView>
-          <View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 10}}>
-              <Text style={{fontSize: 24, fontWeight: 'bold', color: '#172121'}}>
-                China
-              </Text>
-              <Text style={{fontSize: 24, color: '#172121'}}> / Spicy</Text>
-            </View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 20, alignItems: 'center', justifyContent: 'space-between'}}>
-              <View>
-                <Text style={{fontSize: 24, fontWeight: 'bold', color: '#172121'}}>
-                  Steamed
-                </Text>
-                <Text style={{fontSize: 24, fontWeight: 'bold', color: '#172121'}}>Chicken with</Text>
-                <Text style={{fontSize: 24, fontWeight: 'bold', color: '#172121'}}>Chilly Sauce</Text>
-                <Text style={{fontWeight: 'bold', color: '#77C360', marginVertical: 10}}>2.30 EUR</Text>
-              </View>
-              <View style={{marginRight: 20,}}>
-                <Image style={{width: 140, height: 140, borderRadius: 100, borderWidth:5, borderColor: 'black', marginBottom: 10}} source={require('../image1.png')} />
-              </View>
-            </View>
-            <Text style={{fontSize: 16, color: '#172121', marginHorizontal: 10, marginBottom: 10}}>Ingredients (4) / NEEDED</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Button title="OPEN BOTTOM SHEET" onPress={() => this.RBSheet.open()} />
+        <RBSheet
+          ref={ref => {
+            this.RBSheet = ref;
+          }}
+          height={300}
+          openDuration={250}
+          customStyles={{
+            container: {
+              justifyContent: "center",
+              alignItems: "center"
+            }
+          }}
+        >
+          <View style={{alignItems: 'center', marginTop: 20}}>
+            <Text style={{fontSize: 20, color: '#77C360', textDecorationLine: 'underline', marginBottom: 10}}>Cuisine</Text>
+            <TouchableOpacity onPress={()=> this.action()}>
+              <Image style={{width: 140, height: 140, borderRadius: 100, borderWidth:5, borderColor: 'black', marginBottom: 10}} source={require('../image1.png')} />
+            </TouchableOpacity>
           </View>
-          <View style={{backgroundColor: '#FDFFFC'}}>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 10}}>
-              <Text style={{fontSize: 18, fontWeight: 'bold', color: '#172121'}}>
-                Chicken Leg
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}> / 2 pieces</Text>
-            </View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 10}}>
-              <Text style={{fontSize: 18, color: '#172121'}}>
-                2.99 EUR / 4 pieces  -
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}>  1.50 EUR</Text>
-            </View>
-          </View>
-          <View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 10}}>
-              <Text style={{fontSize: 18, fontWeight: 'bold', color: '#172121'}}>
-                Chicken Leg
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}> / 2 pieces</Text>
-            </View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 10}}>
-              <Text style={{fontSize: 18, color: '#172121'}}>
-                2.99 EUR / 4 pieces  -
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}>  1.50 EUR</Text>
-            </View>
-          </View>
-          <View style={{backgroundColor: '#FDFFFC'}}>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 10}}>
-              <Text style={{fontSize: 18, fontWeight: 'bold', color: '#172121'}}>
-                Chicken Leg
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}> / 2 pieces</Text>
-            </View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 10}}>
-              <Text style={{fontSize: 18, color: '#172121'}}>
-                2.99 EUR / 4 pieces  -
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}>  1.50 EUR</Text>
-            </View>
-          </View>
-          <View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginVertical: 10}}>
-              <Text style={{fontSize: 18, fontWeight: 'bold', color: '#172121'}}>
-                Chicken Leg
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}> / 2 pieces</Text>
-            </View>
-            <View style={{flexDirection: 'row', marginHorizontal: 10, marginBottom: 10}}>
-              <Text style={{fontSize: 18, color: '#172121'}}>
-                2.99 EUR / 4 pieces  -
-              </Text>
-              <Text style={{fontSize: 16, color: '#77C360'}}>  1.50 EUR</Text>
-            </View>
-          </View>
-        </ScrollView>
+          {/* <YourOwnComponent /> */}
+        </RBSheet>
       </View>
     );
   }
 }
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: '#E4F3DF',
-    borderColor: '#707070',
-    borderWidth: 1,
-    overflow:"hidden",
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
-  image: {
-    height: 50,
-    width: 40,
-  }
-});

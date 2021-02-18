@@ -121,10 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FDFFFC',
     borderColor: '#707070',
-    borderWidth: 1,
+    // borderWidth: 1,
     overflow:"hidden",
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   text: {
     color: '#77C360',

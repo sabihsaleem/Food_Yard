@@ -1,20 +1,21 @@
-import React, {Component,createRef} from 'react';
+import React, {createRef} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
 import ActionSheet from "react-native-actions-sheet";
 
 export default class Cuisine extends React.Component {
 
   componentDidMount() {
-    const actionSheetRef = createRef()
-    actionSheetRef.current?.setModalVisible(false);
+    const actionSheetRef = createRef();
+    <ActionSheet ref={actionSheetRef} />;
+    actionSheetRef.current?.hide();
   }
 
   render() {
     return (
       <View style={styles.main}>
         <View style={{height: '7%', justifyContent: 'center',}}>
-          <TouchableOpacity style={{marginHorizontal: 5}} >
-            <Image style={styles.image} source={require('../back-button-icon-png-25.jpg')} />
+          <TouchableOpacity style={{marginVertical: 10}} onPress={()=> this.props.navigation.goBack()} >
+            <Image style={styles.image} source={require('../back.png')} />
           </TouchableOpacity>
         </View>
         <ScrollView>
@@ -106,13 +107,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E4F3DF',
     borderColor: '#707070',
-    borderWidth: 1,
     overflow:"hidden",
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   image: {
-    height: 50,
-    width: 40,
+    height: 20,
+    width: 30,
   }
 });
