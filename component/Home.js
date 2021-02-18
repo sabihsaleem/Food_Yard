@@ -45,7 +45,7 @@ export default class Home extends Component {
                     
                   <Image
                     style={{overflow:"hidden",width: '100%', height: 100, borderRadius: 15}}
-                    source={require('../image2.png')}
+                    source={require('../image1.png')}
                   > 
 
                   </Image>
@@ -82,7 +82,7 @@ export default class Home extends Component {
                     
                   <Image
                     style={{overflow:"hidden",width: '100%', height: 100, borderRadius: 15}}
-                    source={require('../image2.png')}
+                    source={require('../image3.png')}
                   > 
 
                   </Image>
@@ -98,7 +98,7 @@ export default class Home extends Component {
                     
                   <Image
                     style={{overflow:"hidden",width: '100%', height: 100, borderRadius: 15}}
-                    source={require('../image2.png')}
+                    source={require('../image4.png')}
                   > 
 
                   </Image>

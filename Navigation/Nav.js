@@ -62,7 +62,8 @@ function Tabular() {
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Icon
-              name="facebook"
+            name='coffee'
+            type='feather'
               color={focused ? color : "#707070"}
               focused={focused}
               color={color}
